@@ -1,15 +1,81 @@
 #include QMK_KEYBOARD_H
 
+// TODO: Maybe the zig compiler can squeeze more space out of the image...
+
 enum unicode_names {
-    BANG,
-    IRONY,
-    SNEK,
+    ae,
+    Ae,
+    ue,
+    Ue,
+    oe,
+    Oe,
+
+    // LaTeX
+    RA,
+    LRA,
+
+    in,
+    notin,
+
+    exists,
+    nexists,
+    forall,
+
+    pm,
+    cdot,
+    times,
+
+    cap,
+    cup,
+
+    subset,
+    subseteq,
+    nsubset,
+    nsubseteq,
+
+    N,
+    Z,
+    Q,
+    R,
+    C,
 };
 
 const uint32_t PROGMEM unicode_map[] = {
-    [BANG]  = 0X203D,  // ‽
-    [IRONY] = 0X2E2E,  // ⸮
-    [SNEK]  = 0XF6, // 🐍
+    [ae] = 0xe4,
+    [Ae] = 0xc4,
+    [ue] = 0xfc,
+    [Ue] = 0xdc,
+    [oe] = 0Xf6,
+    [Oe] = 0xd6,
+
+    // LaTeX
+    [RA]  = 0x21d2,
+    [LRA] = 0x21d4,
+
+    [in]    = 0x2208,
+    [notin] = 0x2209,
+
+    [exists]  = 0x2203,
+    [nexists] = 0x2204,
+    [forall]  = 0x2200,
+
+    [pm]    = 0x2213,
+    [cdot]  = 0x2022,
+    [times] = 0x2a2f,
+
+    [cap] = 0x2229,
+    [cup] = 0x222a,
+
+    [subset]    = 0x2282,
+    [subseteq]  = 0x2286,
+    [nsubset]   = 0x2284,
+    [nsubseteq] = 0x2288,
+
+    [N] = 0x2215,
+    [Z] = 0x2124,
+    [Q] = 0x211a,
+    [R] = 0x211d,
+    [C] = 0x2102,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -57,10 +123,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [4] = LAYOUT_split_4x6_5(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   X(SNEK),            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_NO,   X(LRA),   X(RA),   KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     X(pm),   X(cdot),   X(times),  X(forall), X(exists),   X(nexists),
+            XP(ae, Ae),   XP(oe, Oe),   KC_NO,   XP(ue, Ue),   KC_NO,   KC_NO,      X(in),   X(cap),   X(subset) ,    X(subseteq),   KC_NO,   KC_NO,
+            KC_NO,   X(N),   X(Z),   X(Q),   X(R),   X(C),                          X(notin),   X(cup),   X(nsubset),   X(nsubseteq),   KC_NO,   KC_NO,
 
             KC_TRNS,   KC_TRNS,     KC_TRNS,           KC_TRNS,   KC_TRNS,   KC_TRNS,
                        KC_TRNS,   KC_TRNS,                    KC_TRNS,   KC_TRNS
