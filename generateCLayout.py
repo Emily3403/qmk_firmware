@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os.path
 import sys
 
 space_between_stuff = 4
@@ -13,6 +14,10 @@ def main() -> None:
     buckets_3: list[list[str]] = [[], [""]]
 
     final_str = "LAYOUT_split_4x6_5("
+
+    with open(f"{os.path.dirname(sys.argv[0])}/keyboards/bastardkb/scylla/keymaps/Emily3403/keymap.c") as f:
+        text = f.read()
+        print()
 
     for i, item in enumerate(sys.argv[1].split(",")[:48]):
         item = item.strip()

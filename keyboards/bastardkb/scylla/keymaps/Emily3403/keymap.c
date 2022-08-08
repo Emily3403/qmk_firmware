@@ -9,13 +9,25 @@ enum unicode_names {
     Ue,
     oe,
     Oe,
+    sz,
+
+    ArrowLeft,
+    ArrowDown,
+    ArrowUp,
+    ArrowRight,
+
+    DArrowLeft,
+    DArrowDown,
+    DArrowUp,
+    DArrowRight,
 
     // LaTeX
-    RA,
     LRA,
 
     in,
     notin,
+    eq,
+    neq,
 
     exists,
     nexists,
@@ -47,21 +59,33 @@ const uint32_t PROGMEM unicode_map[] = {
     [Ue] = 0xdc,
     [oe] = 0Xf6,
     [Oe] = 0xd6,
+    [sz] = 0xdf,
+
+    [ArrowLeft]  = 0x2190,
+    [ArrowDown]  = 0x2193,
+    [ArrowUp]    = 0x2191,
+    [ArrowRight] = 0x2192,
+
+    [DArrowLeft]  = 0x21d0,
+    [DArrowDown]  = 0x21d3,
+    [DArrowUp]    = 0x21d1,
+    [DArrowRight] = 0x21d2,
 
     // LaTeX
-    [RA]  = 0x21d2,
     [LRA] = 0x21d4,
 
     [in]    = 0x2208,
     [notin] = 0x2209,
+    [eq] = 0x3d,
+    [neq]   = 0x2260,
 
     [exists]  = 0x2203,
     [nexists] = 0x2204,
     [forall]  = 0x2200,
 
-    [pm]    = 0x2213,
+    [pm]    = 0xb1,
     [cdot]  = 0x2022,
-    [times] = 0x2a2f,
+    [times] = 0xd7,
 
     [cap] = 0x2229,
     [cup] = 0x222a,
@@ -117,21 +141,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_NO,   KC_WBAK,   KC_WREF,   KC_WSCH,   KC_WFWD,   KC_WHOM,           KC_MPLY,   KC_MS_L,   KC_MS_D,   KC_MS_U,   KC_MS_R,   KC_NO,
             KC_NO,   KC_FIND,   KC_UNDO,     KC_AGIN,     KC_COPY,     KC_NO,             KC_NO,     KC_WH_L,   KC_WH_D,   KC_WH_U,   KC_WH_R,   KC_TRNS,
 
-            KC_TRNS,   KC_TRNS,   KC_TRNS,           KC_LCTL,   KC_BTN1,   KC_BTN3,
-                       KC_TRNS,   KC_TRNS,                      KC_DEL,    KC_BTN2
+            KC_TRNS,   KC_TRNS,   KC_TRNS,           KC_LCTL,   KC_BTN1,   KC_BTN2,
+                       KC_TRNS,   KC_TRNS,                      KC_TRNS,    KC_DEL
 ),
 
 
     [4] = LAYOUT_split_4x6_5(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_NO,   X(LRA),   X(RA),   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     X(pm),   X(cdot),   X(times),  X(forall), X(exists),   X(nexists),
-            XP(ae, Ae),   XP(oe, Oe),   KC_NO,   XP(ue, Ue),   KC_NO,   KC_NO,      X(in),   X(cap),   X(subset) ,    X(subseteq),   KC_NO,   KC_NO,
-            KC_NO,   X(N),   X(Z),   X(Q),   X(R),   X(C),                          X(notin),   X(cup),   X(nsubset),   X(nsubseteq),   KC_NO,   KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_NO,   KC_NO,   X(forall),   KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                     XP(in, notin), XP(cap, cup), XP(subset, nsubset), XP(subseteq, nsubseteq), XP(exists, nexists), XP(eq, neq),
+            XP(ae, Ae),   XP(oe, Oe),   X(sz),   XP(ue, Ue),   KC_NO,   KC_NO,      KC_NO,  XP(ArrowLeft, DArrowLeft),  XP(ArrowDown, DArrowDown)  ,  XP(ArrowUp, DArrowUp)  ,  XP(ArrowRight, DArrowRight),   KC_NO,
+            KC_NO,   X(N),   X(Z),   X(Q),   X(R),   X(C),                          X(pm), X(cdot), X(times),  X(LRA), KC_NO,   KC_NO,
 
             KC_TRNS,   KC_TRNS,     KC_TRNS,           KC_TRNS,   KC_TRNS,   KC_TRNS,
                        KC_TRNS,   KC_TRNS,                    KC_TRNS,   KC_TRNS
 ),
-
 
     // clang-format on
 };
