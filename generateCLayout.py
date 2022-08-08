@@ -5,7 +5,6 @@ import sys
 space_between_stuff = 4
 space_between_middle = 8
 
-
 def main() -> None:
     print()
     buckets_0: list[list[str]] = [[] for _ in range(4)]
@@ -17,7 +16,7 @@ def main() -> None:
 
     with open(f"{os.path.dirname(sys.argv[0])}/keyboards/bastardkb/scylla/keymaps/Emily3403/keymap.c") as f:
         text = f.read()
-        print()
+        pass
 
     for i, item in enumerate(sys.argv[1].split(",")[:48]):
         item = item.strip()
